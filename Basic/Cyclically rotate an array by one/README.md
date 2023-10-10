@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1?page=1&difficulty[]=-1&category[]=Arrays&sortBy=submissions">Cyclically rotate an array by one</a></h2><h3>Difficulty Level : Basic</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array,&nbsp;rotate the&nbsp;array by one position in clock-wise direction.</span><br>
+<h2><a href="https://practice.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1">Cyclically rotate an array by one</a></h2><h3>Difficulty Level : Basic</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given an array,&nbsp;rotate the&nbsp;array by one position in clock-wise direction.</span><br>
 &nbsp;</p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
