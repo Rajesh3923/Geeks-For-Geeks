@@ -7,10 +7,12 @@ class Solution{
     public:
     int c=0;
     int getSum(int a[], int n) {
-        for (int i=0;i<n;i++){
-	       c+=a[i];
-	   }return c;
-    }   
+        long long sum=0;
+        for(int i=0;i<n;i++){
+            sum+=a[i];
+            
+        }return sum; 
+    }  
 };
 
 //{ Driver Code Starts.
