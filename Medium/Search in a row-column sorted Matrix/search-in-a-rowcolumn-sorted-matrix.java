@@ -40,17 +40,17 @@ class Solution {
    static boolean search(int matrix[][], int n, int m, int x) {
     boolean ans = false;
     
-    int i = 0;      // Start from the top row
-    int j = m - 1;  // Start from the rightmost column
+    int i = 0;     
+    int j = m - 1;  
     
     while (i < n && j >= 0) {
         if (matrix[i][j] == x) {
             ans = true;
             break;
         } else if (matrix[i][j] > x) {
-            j--;  // Move left in the current row
+            j--;  
         } else {
-            i++;  // Move down to the next row
+            i++;  
         }
     }
     
