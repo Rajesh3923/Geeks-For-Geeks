@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/reverse-a-string-using-stack/1">Reverse a string using Stack</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given a string <strong>S</strong>, the task is to reverse the string using stack.</span></p>
+<h2><a href="https://www.geeksforgeeks.org/problems/reverse-a-string-using-stack/1">Reverse a string using Stack</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given a string <strong>S</strong>, the task is to reverse the string using stack.</span></p>
 
 <p>&nbsp;</p>
 
