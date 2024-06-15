@@ -60,27 +60,24 @@ class Driverclass
 // } Driver Code Ends
 
 
-
 class Solution
 {
-    long minCost(long arr[], int n) 
-    {
-        PriorityQueue<Long> minHeap = new PriorityQueue<>();
-
-        for (long rope : arr) {
-            minHeap.offer(rope);
+    //Function to return the minimum cost of connecting the ropes.
+    public long minCost(long arr[], int n) {
+        PriorityQueue<Long> pq = new PriorityQueue<>();
+        long s = 0;
+        
+        for (int i = 0; i < n; i++) {
+            pq.add(arr[i]);
         }
-
-        long totalCost = 0;
-
-        while (minHeap.size() > 1) {
-            long rope1 = minHeap.poll();
-            long rope2 = minHeap.poll();
-            long cost = rope1 + rope2;
-            minHeap.offer(cost);
-            totalCost += cost;
+        
+        while (pq.size() > 1) {
+            long a = pq.poll();
+            long b = pq.poll();
+            s += a + b;
+            pq.add(a + b);
         }
-
-        return totalCost;
+        
+        return s;
     }
 }
