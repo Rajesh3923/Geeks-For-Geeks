@@ -39,37 +39,36 @@ class GFG
 // } Driver Code Ends
 
 
-
-
 //User function Template for Java
 
-class Solution {
-    // Function to find the minimum number of platforms required at the railway station such that no train waits.
-    static int findPlatform(int arr[], int dep[], int n) {
-        // Sort the arrival and departure times
+class Solution
+{
+    //Function to find the minimum number of platforms required at the
+    //railway station such that no train waits.
+    static int findPlatform(int arr[], int dep[], int n)
+    {
         Arrays.sort(arr);
         Arrays.sort(dep);
-        
-        // Initialize pointers for arrival and departure times
-        int i = 1, j = 0;
-        // Initialize variables to keep track of platforms needed and the result
-        int platforms_needed = 1, max_platforms = 1;
-        
-        // Iterate over arrival and departure times
-        while (i < n && j < n) {
-            // If the next event is an arrival, increment platforms_needed
-            if (arr[i] <= dep[j]) {
-                platforms_needed++;
-                i++;
-            } else { // If the next event is a departure, decrement platforms_needed
-                platforms_needed--;
-                j++;
+        int a=arr.length;
+        int d=dep.length;
+        int plat=1;
+        int maxx=1;
+        int aa=1;
+        int dd=0;
+        while(aa<a){
+            if(arr[aa]<=dep[dd]){
+                plat++;
+                aa++;
+                
             }
-            // Update max_platforms if needed
-            max_platforms = Math.max(max_platforms, platforms_needed);
-        }
+            else{
+                plat--;
+                dd++;
+            }
+            maxx=Math.max(maxx,plat);
+        }return maxx;
         
-        return max_platforms;
     }
+    
 }
 
