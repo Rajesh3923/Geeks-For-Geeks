@@ -108,7 +108,7 @@ class Node{
 
 class Solution {
     /*you are required to complete this function */
-   boolean hasPathSum(Node root, int target) {
+boolean hasPathSum(Node root, int target) {
     return helper(root, target, 0);
 }
 
@@ -121,11 +121,20 @@ public static boolean helper(Node root, int target, int s) {
     
     // Check if we have reached a leaf node and the sum equals the target
     if (root.left == null && root.right == null) {
-        return s == target;
+        if (s == target) {
+            return true;
+        }
     }
     
     // Check the left and right subtree
-    return helper(root.left, target, s) || helper(root.right, target, s);
+    boolean leftHasPath = helper(root.left, target, s);
+    boolean rightHasPath = helper(root.right, target, s);
+    
+    // "Backtrack" by subtracting the current node's value from s (conceptually, since s is passed by value)
+    s -= root.data;
+    
+    return leftHasPath || rightHasPath;
 }
+
 
 }
