@@ -50,11 +50,11 @@ class Solution {
     // Function to get the maximum total value in the knapsack.
     double fractionalKnapsack(int W, Item arr[], int n) {
         // Create an array of Double to store the value/weight ratio
-        Double[] ratio = new Double[n];
+        // Double[] ratio = new Double[n];
         
-        for (int i = 0; i < n; i++) {
-            ratio[i] = (double) arr[i].value / arr[i].weight;
-        }
+        // for (int i = 0; i < n; i++) {
+        //     ratio[i] = (double) arr[i].value / arr[i].weight;
+        // }
         
         // Sort items by value per weight in descending order
         Arrays.sort(arr, (a, b) -> Double.compare((double) b.value / b.weight, (double) a.value / a.weight));
