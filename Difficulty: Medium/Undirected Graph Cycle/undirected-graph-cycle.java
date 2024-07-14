@@ -31,6 +31,52 @@ class GFG {
 }
 // } Driver Code Ends
 
+
+class Solution {
+    // Function to detect cycle in an undirected graph.
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        int[] visited = new int[V];
+        
+        // Iterate through each node to handle disconnected components
+        for (int i = 0; i < V; i++) {
+            // If the node is not visited, perform DFS to detect a cycle
+            if (visited[i] == 0) {
+                if (dfsCheckCycle(i, -1, adj, visited)) {
+                    return true;// for every 
+                }
+            }
+        }
+        // If no cycle is detected in any component, return false
+        return false;
+    }
+
+    // Helper function to perform DFS and check for cycles
+    public static boolean dfsCheckCycle(int node, int parent, ArrayList<ArrayList<Integer>> adj, int[] visited) {
+        // Mark the current node as visited
+        visited[node] = 1;
+
+        // Traverse all adjacent nodes (neighbors)
+        for (int neighbor : adj.get(node)) {
+            // If the adjacent node is not visited, recursively call dfsCheckCycle
+            if (visited[neighbor] == 0) {
+                if (dfsCheckCycle(neighbor, node, adj, visited)) {
+                    return true; // it receives the true from else if, if a cycle is found
+                }
+            }
+            // If the adjacent node is visited and not the parent, a cycle is detected
+            else if (neighbor != parent) {
+                return true;
+            }
+        }
+        // No cycle detected in this path
+        return false;
+    }
+
+}
+
+// bfs code below 
+
+/**
 class Pair{
     int node ;
     int parent;
@@ -87,3 +133,6 @@ class Solution {
     }
     
 }
+*/
+
+
