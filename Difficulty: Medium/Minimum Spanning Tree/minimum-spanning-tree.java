@@ -35,51 +35,49 @@ public class Main {
 // } Driver Code Ends
 
 
-class Solution {
 
+class Solution {
     static int spanningTree(int V, int E, List<List<int[]>> adj) {
         int[] size = new int[V];
         int[] parent = new int[V];
         
-        for(int i = 0; i < V; i++) {
+        for (int i = 0; i < V; i++) {
             size[i] = 1;
             parent[i] = i;
         }
         
-        List<Edge> edges = new ArrayList<Edge>();
+        // PriorityQueue with custom comparator to sort edges by weight
+        PriorityQueue<Edge> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
         
-        for(int i = 0; i < V; i++) {
-            int ajdNodeListSize = adj.get(i).size();
-            for(int j = 0; j < ajdNodeListSize; j++) {
+        for (int i = 0; i < V; i++) {
+            for (int[] edge : adj.get(i)) {
                 int srcNode = i;
-                int destNode = adj.get(i).get(j)[0];
-                int weight = adj.get(i).get(j)[1];
+                int destNode = edge[0];
+                int weight = edge[1];
                 
-                edges.add(new Edge(srcNode, destNode, weight));
+                pq.add(new Edge(srcNode, destNode, weight));
             }
         }
         
-        Collections.sort(edges);
         int mst = 0;
-        int edgeSize = edges.size();
         
-        for(int i = 0; i < edgeSize; i++) {
-            int node = edges.get(i).src;
-            int destination = edges.get(i).dest;
-            int wt = edges.get(i).weight;
+        while (!pq.isEmpty()) {
+            Edge edge = pq.poll();
+            int node = edge.src;
+            int destination = edge.dest;
+            int wt = edge.weight;
             
-            if(findParent(parent, node) != findParent(parent, destination)) {
+            if (findParent(parent, node) != findParent(parent, destination)) {
                 mst += wt;
                 unionBySize(parent, size, node, destination);
             }
         }
         
         return mst;
-        
     }
     
     static int findParent(int[] parent, int node) {
-        if(parent[node] == node) {
+        if (parent[node] == node) {
             return node;
         }
         
@@ -91,30 +89,27 @@ class Solution {
         int parentU = findParent(parent, u);
         int parentV = findParent(parent, v);
         
-        if(parentU == parentV) {
+        if (parentU == parentV) {
             return; // belongs to same component or parent
-        } else if(size[parentU] < size[parentV]) {
+        } else if (size[parentU] < size[parentV]) {
             parent[parentU] = parentV;
             size[parentV] += size[parentU];
-        } else  {
+        } else {
             parent[parentV] = parentU;
             size[parentU] += size[parentV];
         }
     }
+    
+    static class Edge {
+        int src, dest, weight;
+        Edge(int src, int dest, int weight) {
+            this.src = src;
+            this.dest = dest;
+            this.weight = weight;
+        }
+    }
 }
 
-class Edge implements Comparable<Edge> {
-    int src, dest, weight;
-    Edge(int src, int dest, int wt) {
-        this.src = src;
-        this.dest = dest;
-        this.weight = wt;
-    }
-    
-    public int compareTo(Edge compareEdge) {
-        return this.weight - compareEdge.weight;
-    }
-}
 
 // using the Prims Algo
 
