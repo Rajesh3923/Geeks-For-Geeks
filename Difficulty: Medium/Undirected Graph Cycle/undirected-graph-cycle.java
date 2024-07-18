@@ -31,7 +31,7 @@ class GFG {
 }
 // } Driver Code Ends
 
-
+// here bfs and dfs both are same for undirected graph
 class Solution {
     // Function to detect cycle in an undirected graph.
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
@@ -42,7 +42,7 @@ class Solution {
             // If the node is not visited, perform DFS to detect a cycle
             if (visited[i] == 0) {
                 if (dfsCheckCycle(i, -1, adj, visited)) {
-                    return true;// for every 
+                    return true;// for every new component , parent is -1;**
                 }
             }
         }
