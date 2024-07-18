@@ -130,6 +130,7 @@ class Pair{
         // this.parent=parent;
     }
 }
+//** if it's visited , then its visited with lowest cost , dont dont enter
 class Solution {
     static int spanningTree(int V, int E, List<List<int[]>> adj) {
        PriorityQueue<Pair>pq=new PriorityQueue<>((x,y)->x.w-y.w);
