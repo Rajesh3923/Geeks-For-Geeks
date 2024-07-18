@@ -49,6 +49,8 @@ class Solution
                 if(i==j)matrix[i][j]=0;
             }
          }
+         // here k is the no of nodes , so matrix is multiplied with that
+         // no of times ,
         for(int k=0;k<r;k++){
             for(int i=0;i<c;i++){
                 for(int j=0;j<r;j++){
