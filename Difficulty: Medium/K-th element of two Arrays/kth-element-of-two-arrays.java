@@ -1,76 +1,60 @@
 //{ Driver Code Starts
-//Initial Template for Java
+// Initial Template for Java
 
-import java.util.*;
-import java.lang.*;
 import java.io.*;
+import java.lang.*;
+import java.util.*;
 
 class GFG {
-	public static void main(String[] args) throws IOException
-	{
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int t = Integer.parseInt(br.readLine().trim());
-        while(t-->0)
-        {
-            StringTokenizer stt = new StringTokenizer(br.readLine());
-            
-            int n = Integer.parseInt(stt.nextToken());
-            int m = Integer.parseInt(stt.nextToken());
-            int k = Integer.parseInt(stt.nextToken());
-            int a[] = new int[(int)(n)];
-            int b[] = new int[(int)(m)];
-            
-            
-            String inputLine[] = br.readLine().trim().split(" ");
-            for (int i = 0; i < n; i++) {
-                a[i] = Integer.parseInt(inputLine[i]);
+        while (t-- > 0) {
+            int k = Integer.parseInt(br.readLine().trim());
+
+            String[] line1 = br.readLine().trim().split(" ");
+            int[] arr1 = new int[line1.length];
+            for (int i = 0; i < line1.length; i++) {
+                arr1[i] = Integer.parseInt(line1[i]);
             }
-            String inputLine1[] = br.readLine().trim().split(" ");
-            for (int i = 0; i < m; i++) {
-                b[i] = Integer.parseInt(inputLine1[i]);
+
+            String[] line2 = br.readLine().trim().split(" ");
+            int[] arr2 = new int[line2.length];
+            for (int i = 0; i < line2.length; i++) {
+                arr2[i] = Integer.parseInt(line2[i]);
             }
-            
-            
-            Solution obj = new Solution();
-            System.out.println(obj.kthElement( a, b, n, m, k));
-            
+
+            Solution ob = new Solution();
+            System.out.println(ob.kthElement(k, arr1, arr2));
         }
-	}
+    }
 }
 
 // } Driver Code Ends
 
 
-//User function Template for Java
-
+// User function Template for Java
 
 class Solution {
-    public long kthElement(int arr1[], int arr2[], int n, int m, int k) {
-    int[] merged = new int[n + m]; // Third array to merge arr1 and arr2
-    int i = 0, j = 0, index = 0;
-
-    // Merge sorted arrays arr1 and arr2 into merged array
-    while (i < n && j < m) {
-        if (arr1[i] <= arr2[j]) {
-            merged[index++] = arr1[i++];
-        } else {
-            merged[index++] = arr2[j++];
+    public long kthElement(int k, int arr1[], int arr2[]) {
+        int[]a=new int[arr1.length+arr2.length];
+        int s1=0;
+        int s2=0;
+        int kk=0;
+        while(s1<arr1.length && s2<arr2.length){
+            if(arr1[s1]<arr2[s2]){
+                a[kk++]=arr1[s1++];
+            }
+            else{
+                a[kk++]=arr2[s2++];
+            }
         }
+        while(s1<arr1.length){
+            a[kk++]=arr1[s1++];
+        }
+        while(s2<arr2.length){
+            a[kk++]=arr2[s2++];
+        }
+        return a[k-1];
     }
-
-    // If there are remaining elements in arr1, copy them to merged
-    while (i < n) {
-        merged[index++] = arr1[i++];
-    }
-
-    // If there are remaining elements in arr2, copy them to merged
-    while (j < m) {
-        merged[index++] = arr2[j++];
-    }
-
-    // k-th element is at index k-1 in 0-based index
-    return merged[k - 1];
-}
-
-    
 }
