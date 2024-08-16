@@ -39,6 +39,8 @@ class GFG
 // } Driver Code Ends
 
 
+
+
 //User function Template for Java
 
 class Solution
@@ -58,7 +60,8 @@ class Solution
         while(aa<a){
             if(arr[aa]<=dep[dd]){
                 plat++;
-                aa++;
+                aa++;//here dd is not increasing cz that , the new arr[aa]
+                // still looks for oldest train to leave cz it's sorted 
                 
             }
             else{
