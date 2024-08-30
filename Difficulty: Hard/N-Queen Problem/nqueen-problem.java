@@ -33,8 +33,6 @@ class GFG {
 
 // User function Template for Java
 
-// User function Template for Java
-
 class Solution {
     public boolean validate(int i,int j,int b[][]){
         int ci=i,cj=j;
